@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="section active">
+    <div class="container">
+        <header class="section-header">
+            <a href="{{ url_for('empleado_menu') }}" class="back-btn" style="text-decoration: none; display: inline-block;">← Volver al Menú</a>
+            <h2>📊 Reportes</h2>
+        </header>
+        <div class="reports-grid">
+            <div class="report-card">
+                <div class="report-icon">💰</div>
+                <h3>Ventas del Mes</h3>
+                <p class="report-value">${{ "{:,.0f}".format(reportes.ventas_mes) }}</p>
+                <p class="report-desc">{{ reportes.reservas_confirmadas }} reservas confirmadas</p>
+            </div>
+            <div class="report-card">
+                <div class="report-icon">✈️</div>
+                <h3>Ocupación de Vuelos</h3>
+                <p class="report-value">{{ reportes.ocupacion_promedio }}%</p>
+                <p class="report-desc">Promedio mensual</p>
+            </div>
+            <div class="report-card">
+                <div class="report-icon">👥</div>
+                <h3>Empleados Activos</h3>
+                <p class="report-value">{{ reportes.empleados_activos }}</p>
+                <p class="report-desc">En operación</p>
+            </div>
+            <div class="report-card">
+                <div class="report-icon">🎫</div>
+                <h3>Reservas Pendientes</h3>
+                <p class="report-value">{{ reportes.reservas_pendientes }}</p>
+                <p class="report-desc">Pendientes de pago</p>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+

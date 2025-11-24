@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+
+{% block content %}
+<!-- Menú de Cliente -->
+<div class="screen active">
+    <div class="container">
+        <header class="menu-header">
+            <h1>👤 Menú Cliente</h1>
+            <a href="{{ url_for('index') }}" class="back-btn" style="text-decoration: none; display: inline-block;">← Volver</a>
+        </header>
+        <nav class="menu-nav">
+            <a href="{{ url_for('buscar_vuelos') }}" class="menu-item" style="text-decoration: none; display: block;">
+                <span class="menu-icon">🔍</span>
+                <span class="menu-text">Buscar Vuelos</span>
+            </a>
+            <a href="{{ url_for('mis_reservas') }}" class="menu-item" style="text-decoration: none; display: block;">
+                <span class="menu-icon">🎫</span>
+                <span class="menu-text">Mis Reservas</span>
+            </a>
+            <a href="{{ url_for('perfil_cliente') }}" class="menu-item" style="text-decoration: none; display: block;">
+                <span class="menu-icon">⚙️</span>
+                <span class="menu-text">Mi Perfil</span>
+            </a>
+        </nav>
+    </div>
+</div>
+{% endblock %}
+

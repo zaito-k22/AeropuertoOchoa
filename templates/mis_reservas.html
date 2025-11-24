@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="section active">
+    <div class="container">
+        <header class="section-header">
+            <a href="{{ url_for('cliente_menu') }}" class="back-btn" style="text-decoration: none; display: inline-block;">← Volver al Menú</a>
+            <h2>🎫 Mis Reservas</h2>
+        </header>
+        <div class="reservas-list">
+            {% for reserva in reservas %}
+            <div class="reserva-card">
+                <div class="reserva-header">
+                    <span class="reserva-codigo">Código: {{ reserva.codigo }}</span>
+                    <span class="reserva-estado estado-{{ reserva.estado.lower() }}">{{ reserva.estado }}</span>
+                </div>
+                <div class="reserva-info">
+                    <div class="ruta">
+                        <span class="ciudad">{{ reserva.origen }}</span>
+                        <span class="flecha">→</span>
+                        <span class="ciudad">{{ reserva.destino }}</span>
+                    </div>
+                    <div class="fecha-hora">
+                        <span>📅 {{ reserva.fecha }}</span>
+                        <span>🕐 {{ reserva.hora_salida }} - {{ reserva.hora_llegada }}</span>
+                    </div>
+                    <div class="detalles">
+                        <span>✈️ Vuelo {{ reserva.numero_vuelo }}</span>
+                        <span>💺 Asiento: {{ reserva.asiento }}</span>
+                        <span>👤 {{ reserva.pasajeros }} Pasajero{% if reserva.pasajeros > 1 %}s{% endif %}</span>
+                    </div>
+                </div>
+                <div class="reserva-acciones">
+                    <button class="btn-secondary">Ver Detalles</button>
+                    {% if reserva.estado == 'Pendiente' %}
+                    <button class="btn-primary">Pagar</button>
+                    {% else %}
+                    <button class="btn-secondary">Modificar</button>
+                    {% endif %}
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+{% endblock %}
+

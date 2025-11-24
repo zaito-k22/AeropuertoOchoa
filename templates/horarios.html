@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="section active">
+    <div class="container">
+        <header class="section-header">
+            <a href="{{ url_for('empleado_menu') }}" class="back-btn" style="text-decoration: none; display: inline-block;">← Volver al Menú</a>
+            <h2>📅 Mis Horarios</h2>
+        </header>
+        <div class="calendar-view">
+            <div class="calendar-header">
+                <h3>Enero 2025</h3>
+            </div>
+            <div class="schedule-list">
+                {% for horario in horarios %}
+                <div class="schedule-item">
+                    <div class="schedule-date">
+                        <span class="day">{{ horario.dia }}</span>
+                        <span class="month">{{ horario.mes }}</span>
+                    </div>
+                    <div class="schedule-details">
+                        {% if horario.vuelo %}
+                        <h4>Vuelo {{ horario.vuelo }}</h4>
+                        <p>{{ horario.ruta }}</p>
+                        <p>🕐 Reporte: {{ horario.hora_reporte }} | Salida: {{ horario.hora_salida }}</p>
+                        <p>✈️ Aeronave: {{ horario.aeronave }}</p>
+                        {% else %}
+                        <h4>Día Libre</h4>
+                        <p>Sin asignaciones</p>
+                        {% endif %}
+                    </div>
+                    <div class="schedule-status status-{{ horario.estado.lower() }}">{{ horario.estado }}</div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+

@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+
+{% block content %}
+<!-- Pantalla de Selección de Rol -->
+<div class="screen active">
+    <div class="container">
+        <div class="logo">
+            <h1>✈️ RápidoOchoa</h1>
+            <p>Sistema de Gestión de Aerolínea</p>
+        </div>
+        <div class="role-options">
+            <h2>Selecciona tu tipo de usuario</h2>
+            <div class="role-buttons">
+                <a href="{{ url_for('cliente_menu') }}" class="role-btn" style="text-decoration: none; display: block;">
+                    <div class="role-icon">👤</div>
+                    <div class="role-title">Cliente</div>
+                    <div class="role-desc">Reserva vuelos, gestiona tus viajes</div>
+                </a>
+                <a href="{{ url_for('empleado_menu') }}" class="role-btn" style="text-decoration: none; display: block;">
+                    <div class="role-icon">👔</div>
+                    <div class="role-title">Empleado</div>
+                    <div class="role-desc">Acceso a funciones administrativas</div>
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+

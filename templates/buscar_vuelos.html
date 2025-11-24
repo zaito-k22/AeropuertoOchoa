@@ -1,0 +1,101 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="section active">
+    <div class="container">
+        <header class="section-header">
+            <a href="{{ url_for('cliente_menu') }}" class="back-btn" style="text-decoration: none; display: inline-block;">← Volver al Menú</a>
+            <h2>🔍 Buscar Vuelos</h2>
+        </header>
+        <form method="POST" action="{{ url_for('buscar_vuelos') }}" class="search-form">
+            <div class="form-group">
+                <label>Origen</label>
+                <select name="origen" id="origen" required>
+                    <option value="">Seleccione origen</option>
+                    <option value="BOG" {% if origen_seleccionado == 'BOG' %}selected{% endif %}>Bogotá (BOG)</option>
+                    <option value="MDE" {% if origen_seleccionado == 'MDE' %}selected{% endif %}>Medellín (MDE)</option>
+                    <option value="CLO" {% if origen_seleccionado == 'CLO' %}selected{% endif %}>Cali (CLO)</option>
+                    <option value="BAQ" {% if origen_seleccionado == 'BAQ' %}selected{% endif %}>Barranquilla (BAQ)</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label>Destino</label>
+                <select name="destino" id="destino" required>
+                    <option value="">Seleccione destino</option>
+                    <option value="BOG" {% if destino_seleccionado == 'BOG' %}selected{% endif %}>Bogotá (BOG)</option>
+                    <option value="MDE" {% if destino_seleccionado == 'MDE' %}selected{% endif %}>Medellín (MDE)</option>
+                    <option value="CLO" {% if destino_seleccionado == 'CLO' %}selected{% endif %}>Cali (CLO)</option>
+                    <option value="BAQ" {% if destino_seleccionado == 'BAQ' %}selected{% endif %}>Barranquilla (BAQ)</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label>Fecha de Salida</label>
+                <input type="date" name="fecha_salida" id="fecha-salida" value="{{ fecha_seleccionada }}" required>
+            </div>
+            <div class="form-group">
+                <label>Pasajeros</label>
+                <input type="number" name="pasajeros" id="pasajeros" min="1" max="9" value="{{ pasajeros_seleccionados or '1' }}" required>
+            </div>
+            <button type="submit" class="btn-primary">Buscar Vuelos</button>
+        </form>
+        
+        {% if vuelos %}
+        <div class="results" style="margin-top: 30px;">
+            <h3 style="margin-bottom: 20px; color: #667eea;">Vuelos Disponibles ({{ vuelos|length }})</h3>
+            {% for vuelo in vuelos %}
+            <div class="vuelo-card">
+                <div class="vuelo-header">
+                    <span class="vuelo-numero">✈️ {{ vuelo.numero }}</span>
+                    <span class="vuelo-precio">${{ "{:,.0f}".format(vuelo.total) }}</span>
+                </div>
+                <div class="vuelo-info">
+                    <div class="vuelo-ruta">
+                        <span>📍 {{ vuelo.origen }}</span>
+                        <span>→</span>
+                        <span>📍 {{ vuelo.destino }}</span>
+                    </div>
+                    <div>
+                        <strong>🕐 Salida:</strong> {{ vuelo.hora_salida }}
+                    </div>
+                    <div>
+                        <strong>🕐 Llegada:</strong> {{ vuelo.hora_llegada }}
+                    </div>
+                    <div>
+                        <strong>⏱️ Duración:</strong> {{ vuelo.duracion }}
+                    </div>
+                    <div>
+                        <strong>💺 Asientos:</strong> {{ vuelo.asientos }} disponibles
+                    </div>
+                </div>
+                <div style="margin-top: 15px;">
+                    <a href="{{ url_for('reservar_vuelo', vuelo_numero=vuelo.numero) }}" class="btn-primary" style="text-decoration: none; display: inline-block;">
+                        Reservar por ${{ "{:,.0f}".format(vuelo.total) }}
+                    </a>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+        {% elif request.method == 'POST' %}
+        <div class="results" style="margin-top: 30px;">
+            <div style="text-align: center; padding: 40px; background: #f8f9fa; border-radius: 12px;">
+                <p style="font-size: 1.2rem; color: #666;">No se encontraron vuelos disponibles para esta búsqueda.</p>
+                <p style="color: #999; margin-top: 10px;">Intente con otras fechas o rutas.</p>
+            </div>
+        </div>
+        {% endif %}
+    </div>
+</div>
+
+<script>
+    // Establecer fecha mínima (hoy)
+    document.addEventListener('DOMContentLoaded', function() {
+        const fechaInput = document.getElementById('fecha-salida');
+        if (fechaInput && !fechaInput.value) {
+            const hoy = new Date();
+            const fechaMinima = hoy.toISOString().split('T')[0];
+            fechaInput.setAttribute('min', fechaMinima);
+        }
+    });
+</script>
+{% endblock %}
+

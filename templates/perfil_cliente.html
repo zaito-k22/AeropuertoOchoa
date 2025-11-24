@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="section active">
+    <div class="container">
+        <header class="section-header">
+            <a href="{{ url_for('cliente_menu') }}" class="back-btn" style="text-decoration: none; display: inline-block;">← Volver al Menú</a>
+            <h2>⚙️ Mi Perfil</h2>
+        </header>
+        <div class="profile-card">
+            <div class="profile-avatar">👤</div>
+            <div class="profile-info">
+                <h3>Juan Pérez</h3>
+                <p>juan.perez@email.com</p>
+                <p>📱 +57 300 123 4567</p>
+            </div>
+            <div class="profile-actions">
+                <button class="btn-secondary">Editar Perfil</button>
+                <button class="btn-secondary">Cambiar Contraseña</button>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
