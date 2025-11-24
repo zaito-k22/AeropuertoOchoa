@@ -27,7 +27,7 @@ Prototipo funcional para exposición de 10 minutos del sistema de gestión de ae
 1. Asegúrate de tener Python instalado en tu sistema
 2. Instala las dependencias:
 ```bash
-pip install -r requirements.txt
+python -m pip install -r requirements.txt
 ```
 
 ## Cómo Ejecutar
