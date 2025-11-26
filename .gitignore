@@ -1,0 +1,17 @@
+# Ignorar archivos de Visual Studio
+.vs/
+
+# Ignorar caché de Python
+__pycache__/
+*.pyc
+
+# Ignorar entornos virtuales
+env/
+venv/
+
+# Ignorar archivos de sistema
+.DS_Store
+Thumbs.db
+
+# Ignorar logs
+*.log
