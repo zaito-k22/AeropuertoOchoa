@@ -68,7 +68,7 @@
                     </div>
                 </div>
                 <div style="margin-top: 15px;">
-                    <a href="{{ url_for('reservar_vuelo', vuelo_numero=vuelo.numero) }}" class="btn-primary" style="text-decoration: none; display: inline-block;">
+                    <a href="{{ url_for('cliente.reservar_vuelo', vuelo_numero=vuelo.numero) }}" class="btn-primary" style="text-decoration: none; display: inline-block;">
                         Reservar por ${{ "{:,.0f}".format(vuelo.total) }}
                     </a>
                 </div>
