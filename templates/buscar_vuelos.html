@@ -4,10 +4,10 @@
 <div class="section active">
     <div class="container">
         <header class="section-header">
-            <a href="{{ url_for('cliente_menu') }}" class="back-btn" style="text-decoration: none; display: inline-block;">← Volver al Menú</a>
+            <a href="{{ url_for('cliente.menu') }}" class="back-btn" style="text-decoration: none; display: inline-block;">← Volver al Menú</a>
             <h2>🔍 Buscar Vuelos</h2>
         </header>
-        <form method="POST" action="{{ url_for('buscar_vuelos') }}" class="search-form">
+        <form method="POST" action="{{ url_for('cliente.buscar_vuelos') }}" class="search-form">
             <div class="form-group">
                 <label>Origen</label>
                 <select name="origen" id="origen" required>

@@ -4,7 +4,7 @@
 <div class="section active">
     <div class="container">
         <header class="section-header">
-            <a href="{{ url_for('empleado_menu') }}" class="back-btn" style="text-decoration: none; display: inline-block;">← Volver al Menú</a>
+            <a href="{{ url_for('empleado.menu') }}" class="back-btn" style="text-decoration: none; display: inline-block;">← Volver al Menú</a>
             <h2>👥 Gestión de Empleados</h2>
         </header>
         <div class="employees-actions">
@@ -13,7 +13,7 @@
         
         <div id="formulario-empleado" style="display: none; background: #f8f9fa; padding: 25px; border-radius: 12px; margin-bottom: 25px;">
             <h3 style="margin-bottom: 20px; color: #667eea;">Registrar Nuevo Empleado</h3>
-            <form method="POST" action="{{ url_for('gestion_empleados') }}" style="display: grid; gap: 15px;">
+            <form method="POST" action="{{ url_for('empleado.gestion_empleados') }}" style="display: grid; gap: 15px;">
                 <div class="form-group">
                     <label>Nombre Completo</label>
                     <input type="text" name="nombre" required>

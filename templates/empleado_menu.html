@@ -6,18 +6,18 @@
     <div class="container">
         <header class="menu-header">
             <h1>👔 Menú Empleado</h1>
-            <a href="{{ url_for('index') }}" class="back-btn" style="text-decoration: none; display: inline-block;">← Volver</a>
+            <a href="{{ url_for('main.index') }}" class="back-btn" style="text-decoration: none; display: inline-block;">← Volver</a>
         </header>
         <nav class="menu-nav">
-            <a href="{{ url_for('horarios') }}" class="menu-item" style="text-decoration: none; display: block;">
+            <a href="{{ url_for('empleado.horarios') }}" class="menu-item" style="text-decoration: none; display: block;">
                 <span class="menu-icon">📅</span>
                 <span class="menu-text">Mis Horarios</span>
             </a>
-            <a href="{{ url_for('gestion_empleados') }}" class="menu-item" style="text-decoration: none; display: block;">
+            <a href="{{ url_for('empleado.gestion_empleados') }}" class="menu-item" style="text-decoration: none; display: block;">
                 <span class="menu-icon">👥</span>
                 <span class="menu-text">Gestión de Empleados</span>
             </a>
-            <a href="{{ url_for('reportes') }}" class="menu-item" style="text-decoration: none; display: block;">
+            <a href="{{ url_for('empleado.reportes') }}" class="menu-item" style="text-decoration: none; display: block;">
                 <span class="menu-icon">📊</span>
                 <span class="menu-text">Reportes</span>
             </a>

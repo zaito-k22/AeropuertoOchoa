@@ -59,7 +59,7 @@ Aeropuerto/
 │   ├── perfil_cliente.html
 │   ├── empleado_menu.html # Menú de empleado
 │   ├── horarios.html
-│   ├── gestion_empleados.html
+│   ├── gestion_empleados.html 
 │   └── reportes.html
 └── static/               # Archivos estáticos
     └── styles.css       # Estilos CSS
